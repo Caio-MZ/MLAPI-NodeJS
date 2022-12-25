@@ -5,3 +5,15 @@
   <img src="https://img.shields.io/badge/NodeJS-v16.15.0-informational">
   <img src="https://img.shields.io/badge/npm-8.5.5-informational">
 </p>
+
+## Documentation
+
+### Returns data of all products (JSON)
+```javascript
+  getProductsData({id: 'seller_id', country: 'MLB', formatPrice: true}, (response) => {})
+```
+| Param | Type | Desc |
+| :- | :- | :- |
+| `id` | `string` | **Required**. The seller ID from Mercado Libre |
+| `country` | `string` | **Required** |
+| `formatPrice` | `boolean` | **Optional**. By default, the currency format uses a dot (.). If enabled, the dot is replaced by a comma (,), and 0 is added when the cent value ends with 0 (e.g.: 5.9 -> 5.90) |
