@@ -15,6 +15,6 @@
 | Param | Type | Desc |
 | :- | :- | :- |
 | `id` | `string` | **Required**. The seller ID from Mercado Libre |
-| `country` | `string` | **Required** |
+| `country` | `string` | **Required**. see the list of country IDs by [clicking here](https://api.mercadolibre.com/sites/) |
 | `formatPrice` | `boolean` | **Optional**. By default, the currency format uses a dot (e.g. $5.43). If enabled, the dot is replaced by a comma ($5,43), and 0 is added when the cent value ends with 0 (5.9 -> 5.90) |
 | `response` | `JSON ` | Callback that returns errors or results |
