@@ -8,7 +8,7 @@
 
 ## Documentation
 
-### getProductsData: Returns data of all products
+### **getProductsData**: Returns data of all products
 ```javascript
   getProductsData({id: 'seller_id', country: 'MLB', formatPrice: true}, (response) => {})
 ```
