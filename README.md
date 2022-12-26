@@ -1,5 +1,6 @@
 <h1 align="center">MercadoLibreAPI - NodeJS</h1>
-<p align="center">Simple way to get product information from a specific Mercado Libre seller</p>
+<p align="center">Simple way to get information from a specific Mercado Libre seller</p>
+<p align="center">**This is not the official API**</p>
 <p align="center">
   <img src="https://img.shields.io/badge/Status%20-Developing-red">
   <img src="https://img.shields.io/badge/NodeJS-v16.15.0-informational">
@@ -10,7 +11,7 @@
 
 ### getProductsData: Returns data of all products
 ```javascript
-  getProductsData({id: 'seller_id', country: 'MLB', price: {addZero: true, format: true}}, (response) => {})
+  getProductsData({id: 'seller_id', country: 'country_id', price: {addZero: true, format: true}}, (response) => {})
 ```
 | Param | Type | Desc |
 | :- | :- | :- |
@@ -22,7 +23,7 @@
 
 ### getSellerData: Returns data of seller
 ```javascript
-  getSellerData({id: 'seller_id', country: 'MLB'}, (response) => {})
+  getSellerData({id: 'seller_id', country: 'country_id'}, (response) => {})
 ```
 | Param | Type | Desc |
 | :- | :- | :- |
@@ -32,7 +33,7 @@
 
 ### getAvailableFilters: Returns data of all available filters
 ```javascript
-  getAvailableFilters({id: 'seller_id', country: 'MLB'}, (response) => {})
+  getAvailableFilters({id: 'seller_id', country: 'country_id'}, (response) => {})
 ```
 | Param | Type | Desc |
 | :- | :- | :- |
