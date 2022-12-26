@@ -3,7 +3,7 @@ const https = require('https');
 const getData = function (seller_id, country, res) {
     https.get(`https://api.mercadolibre.com/sites/${country}/search?seller_id=${seller_id}`, (resp) => {
         let data = '';
-        resp.on('data', (chunk) => { data += chunk;});
+        resp.on('data', (chunk) => { data += chunk; });
         resp.on('end', () => {
             if (resp.statusCode != 200) { return res({ error: resp.statusCode == 535 ? 'Please check if the value of COUNTRY is correct' : '', statusCode: resp.statusCode, statusMessage: resp.statusMessage }); }
             try {
@@ -14,9 +14,7 @@ const getData = function (seller_id, country, res) {
             if (data.seller == undefined) {  return res({ error: 'Please check if the value of ID is correct.' }); }
             return res(data);
         });
-    }).on('error', (err) => {
-        return  res({ error: err });
-    });
+    }).on('error', (err) => { return res({ error: err }); });
 }
 
 module.exports = {
@@ -24,13 +22,25 @@ module.exports = {
         getData(req.id, req.country, (resp) => {
             if (resp.error) { return res(resp); }
             let data = resp.results;
-            if(req.formatPrice) {
+            if(req.price) {
                 for (let i = 0; i < data.length; i++) {
-                    let value = new String(data[i].price).replace('.', ',');
-                    data[i].price = Number.parseInt(value.split(',')[1]) < 10 ? value + '0' : value;
+                    let value = new String(data[i].price);
+                    if (req.price.addZero) { value = Number.parseInt(value.split('.')[1]) < 10 ? value + '0' : value; }
+                    if (req.price.format) { value = value.replace('.', ','); }
+                    data[i].price = value;
                 }
             }
             return res(data);
         });
+    },
+    getSellerData: function(req, res) {
+        getData(req.id, req.country, (resp) => {
+            return res(resp.seller);
+        });
+    },
+    getAvailableFilters: function(req, res) {
+        getData(req.id, req.country, (resp) => {
+            return res(resp.available_filters);
+        })
     }
 };
